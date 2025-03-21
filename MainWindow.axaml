@@ -16,8 +16,8 @@
                 <MenuItem Header="Dodaj statično" Click="AddContact"/>
                 <MenuItem Header="Uredi statično" />
                 <MenuItem Header="Dodaj"/>
-                <MenuItem Header="Uredi"/>
-                <MenuItem Header="Odstrani stik" Click="RemoveContact_Click"/>
+                <MenuItem Header="Uredi" Command="{Binding EditUserCommand}"/>
+                <MenuItem Header="Odstrani" Command="{Binding RemoveUserCommand}"/>
             </MenuItem>
         </Menu>
 

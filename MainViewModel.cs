@@ -2,27 +2,30 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Messenger
+namespace Messenger;
+
+public class MainViewModel
 {
-    public class MainViewModel
+    public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
+    public User? SelectedUser { get; set; } // Trenutno izbran stik
+
+    // ICommand za odstranjevanje stika
+    public ICommand RemoveUserCommand { get; }
+    public ICommand EditUserCommand { get; }
+
+    public MainViewModel()
     {
-        public ObservableCollection<User> Users { get; } = new ObservableCollection<User>();
+        // Inicializacija ukaza in povezava z metodo RemoveSelectedUser
+        RemoveUserCommand = new RelayCommand(_ => RemoveSelectedUser(), _ => SelectedUser != null);
+        EditUserCommand = new RelayCommand(_ => EditSelectedUser(), _ => SelectedUser != null);
 
+        // Dodamo testne uporabnike
+        Users.Add(new User("David", "Prisoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+        Users.Add(new User("Luka", "Odsoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+         Users.Add(new User("Ana", "Odsotna", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+    }
 
-         public User? SelectedUser { get; set; } 
-
-        public MainViewModel()
-        {
-
-        
-
-            // Testni uporabniki
-            Users.Add(new User("David", "Prisoten", "slike/david.jpg", "david@email.com", DateTime.Now, "Slovenija"));
-            Users.Add(new User("Luka", "Odsoten", "slike/luka.jpg", "luka@email.com", DateTime.Now.AddHours(-2), "Nemčija"));
-            Users.Add(new User("Ana", "Zaseden", "slike/ana.jpg", "ana@email.com", DateTime.Now.AddHours(-5), "Francija"));
-        }
-
-           public void RemoveSelectedUser()
+    private void RemoveSelectedUser()
     {
         if (SelectedUser != null)
         {
@@ -31,18 +34,15 @@ namespace Messenger
         }
     }
 
-        private void AddUser()
-        {
-            Users.Add(new User("Denis", "Prisoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-        }
-
+     private void EditSelectedUser()
+    {
+        Console.WriteLine("Im in");
         
-
-        private void RemoveUser(User user)
+        if (SelectedUser != null)
         {
-            Users.Remove(user);
+            Console.WriteLine("Kull");
+            SelectedUser.Name = "Leon";
+            SelectedUser.Status = "Offline";
         }
-
     }
-    
 }

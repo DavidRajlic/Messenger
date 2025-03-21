@@ -66,3 +66,4 @@
 /Users/davidrajlic/David/Interakcija/vaja1/Messenger/obj/Debug/net9.0/Messenger.csproj.Up2Date
 /Users/davidrajlic/David/Interakcija/vaja1/Messenger/obj/Debug/net9.0/Messenger.genruntimeconfig.cache
 /Users/davidrajlic/David/Interakcija/vaja1/Messenger/obj/Debug/net9.0/ref/Messenger.dll
+/Users/davidrajlic/David/Interakcija/vaja1/Messenger/obj/Debug/net9.0/Messenger.sourcelink.json

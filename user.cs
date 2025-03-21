@@ -1,19 +1,47 @@
 using System;
+using System.ComponentModel;
 
 namespace Messenger;
-public class User
+
+public class User : INotifyPropertyChanged
 {
-    public string Name { get; set; }
-    public string Status { get; set; }
-    public string ProfilePicture { get; set; }
+    private string _name;
+    private string _status;
+
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            _name = value;
+            OnPropertyChanged(nameof(Name));
+        }
+    }
+
+    public string Status
+    {
+        get => _status;
+        set
+        {
+            _status = value;
+            OnPropertyChanged(nameof(Status));
+        }
+    }
+     public string ProfilePicture { get; set; }
     public string Email { get; set; }
     public DateTime LastOnline { get; set; }
     public string Location { get; set; }
 
-    public User(string name, string status, string profilePicture, string email, DateTime lastOnline, string location)
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged(string propertyName)
     {
-        Name = name;
-        Status = status;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+     public User(string name, string status, string profilePicture, string email, DateTime lastOnline, string location)
+    {
+        _name = name;
+        _status = status;
         ProfilePicture = profilePicture;
         Email = email;
         LastOnline = lastOnline;

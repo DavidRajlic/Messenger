@@ -24,22 +24,13 @@ public partial class MainWindow : Window
 
     private void AddContact(object? sender, RoutedEventArgs e)
     {
-       
+     
         if (DataContext is MainViewModel vm)
         {
             // add user
-            vm.Users.Add(new User("Denis", "Prisoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+            vm.Users.Add(new User("Denis", "Offline", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
         }
     }
-
-    private void RemoveContact_Click(object sender, RoutedEventArgs e)
-{
-    if (DataContext is MainViewModel viewModel)
-    {
-        viewModel.RemoveSelectedUser();
-    }
-}
-
 
     private async void OnItemDoubleTapped(object sender, RoutedEventArgs e)
     {
