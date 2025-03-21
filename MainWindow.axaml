@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Messenger"
+        x:DataType="local:MainViewModel"
+        x:Class="Messenger.MainWindow"
+        Title="Messenger"
+        Width="800" Height="800">
+    
+    <StackPanel>
+        <!-- Glavni meni -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Datoteka">
+                <MenuItem Header="Izhod" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Stiki">
+                <MenuItem Header="Dodaj statično" Click="AddContact"/>
+                <MenuItem Header="Uredi statično" />
+                <MenuItem Header="Dodaj"/>
+                <MenuItem Header="Uredi"/>
+                <MenuItem Header="Odstrani stik" Click="RemoveContact_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <WrapPanel Orientation="Horizontal" Margin="10">
+            <Label Content="David Rajlič" FontSize="18" FontWeight="Bold"/>
+        </WrapPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Seznam stikov -->
+            <StackPanel Grid.Column="0" Margin="10">
+                <TextBlock Text="Seznam stikov:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+               <ListBox ItemsSource="{Binding Users}" 
+         SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
+    <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="local:User">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </ListBox.ItemTemplate>
+</ListBox>
+
+            </StackPanel>
+
+   <WrapPanel Orientation="Vertical" Grid.Column="1" Margin="10">
+    <TextBox Name="SelectedContactTextBox" IsReadOnly="True" Margin="10"/>
+    
+    <TextBlock Text="Pogovor:" FontSize="16" Margin="5"/>
+    <ListBox Name="ChatListBox" Height="200" Margin="5">
+        <ListBoxItem Content="User 1: Živjo!" />
+        <ListBoxItem Content="User 2: Hoj, kak si?" />
+    </ListBox>
+
+    <!-- Vnosno polje za sporočilo -->
+    <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Vnesite sporočilo.."  />
+     <StackPanel Orientation="Horizontal" Margin="5">
+        <Button Name="SendMessageButton" Content="Pošlji" Width="80" Click="SendMessageButton_Click"/>
+        <Button Name="EmojiButton" Content="😊" Width="40" Click="EmojiButton_Click"/>
+    </StackPanel>
+
+   
+</WrapPanel>
+
+
+</Grid>
+    </StackPanel>
+    
+ 
+    
+</Window>
