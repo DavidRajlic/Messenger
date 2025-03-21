@@ -18,11 +18,10 @@ public class MainViewModel
         // Inicializacija ukaza in povezava z metodo RemoveSelectedUser
         RemoveUserCommand = new RelayCommand(_ => RemoveSelectedUser(), _ => SelectedUser != null);
         EditUserCommand = new RelayCommand(_ => EditSelectedUser(), _ => SelectedUser != null);
-
         // Dodamo testne uporabnike
-        Users.Add(new User("David", "Prisoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-        Users.Add(new User("Luka", "Odsoten", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-         Users.Add(new User("Ana", "Odsotna", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+        Users.Add(new User("David", "Prisoten","Assets/avatar.jpeg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+        Users.Add(new User("Luka", "Odsoten", "Assets/profile2.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+         Users.Add(new User("Ana", "Odsotna", "Assets/profile3.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
     }
 
     private void RemoveSelectedUser()

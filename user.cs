@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel;
+using Avalonia.Controls;
+using Avalonia.Media.Imaging;
 
 namespace Messenger;
 
@@ -27,7 +29,7 @@ public class User : INotifyPropertyChanged
             OnPropertyChanged(nameof(Status));
         }
     }
-     public string ProfilePicture { get; set; }
+    public Bitmap ProfilePicture { get; set; }
     public string Email { get; set; }
     public DateTime LastOnline { get; set; }
     public string Location { get; set; }
@@ -38,13 +40,25 @@ public class User : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-     public User(string name, string status, string profilePicture, string email, DateTime lastOnline, string location)
+     public User(string name, string status, string imagePath, string email, DateTime lastOnline, string location)
     {
         _name = name;
         _status = status;
-        ProfilePicture = profilePicture;
+        ProfilePicture = LoadBitmap(imagePath);
         Email = email;
         LastOnline = lastOnline;
         Location = location;
+    }
+
+    private Bitmap LoadBitmap(string path)
+    {
+        try
+        {
+            return new Bitmap(path);
+        }
+        catch (Exception)
+        {
+            return null; // Če slika ne obstaja, vrne null
+        }
     }
 }
