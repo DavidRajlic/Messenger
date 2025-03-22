@@ -4,8 +4,9 @@
         x:DataType="local:MainViewModel"
         x:Class="Messenger.MainWindow"
         Title="Messenger"
-        Width="800" Height="800">
-    
+        Width="800" Height="800"
+        MaxWidth="1000" MaxHeight="1000"
+        MinWidth="600" MinHeight="600">
     <StackPanel>
         <!-- Glavni meni -->
         <Menu DockPanel.Dock="Top">
@@ -52,7 +53,8 @@
             </StackPanel>
 
    <WrapPanel Orientation="Vertical" Grid.Column="1" Margin="10">
-    <TextBox Name="SelectedContactTextBox" IsReadOnly="True" Margin="10"/>
+   <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" IsReadOnly="True" Margin="10"/>
+
     
     <TextBlock Text="Pogovor:" FontSize="16" Margin="5"/>
     <ListBox Name="ChatListBox" Height="200" Margin="5">
@@ -70,12 +72,24 @@
     </StackPanel>
 </Button>
 
-        <Button Name="EmojiButton" Width="60" Click="EmojiButton_Click">
+     <Button Name="EmojiButton" Width="60">
+    <Button.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="😀" Click="Emoji_Click"/>
+            <MenuItem Header="😂" Click="Emoji_Click"/>
+            <MenuItem Header="😍" Click="Emoji_Click"/>
+            <MenuItem Header="😎" Click="Emoji_Click"/>
+            <MenuItem Header="🤔" Click="Emoji_Click"/>
+            <MenuItem Header="😭" Click="Emoji_Click"/>
+            <MenuItem Header="👍" Click="Emoji_Click"/>
+        </ContextMenu>
+    </Button.ContextMenu>
     <StackPanel Orientation="Horizontal" Spacing="5">
         <TextBlock Text="😊" FontSize="16"/>
         <Image Source="avares://Messenger/Assets/emoji.png" Width="16" Height="16"/>
     </StackPanel>
 </Button>
+
 
     </StackPanel>
 

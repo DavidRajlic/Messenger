@@ -37,7 +37,7 @@ public partial class MainWindow : Window
      
     if (sender is TextBlock textBlock)
     {
-        SelectedContactTextBox.Text = textBlock.Text; 
+        // SelectedContactTextBox.Text = textBlock.Text; 
         await MessageBoxManager
             .GetMessageBoxStandard("Izbran stik", $"Izbral si: {textBlock.Text}")
             .ShowAsync();
@@ -56,11 +56,16 @@ public partial class MainWindow : Window
     }
 }
 
-private void EmojiButton_Click(object sender, RoutedEventArgs e)
+private void Emoji_Click(object? sender, RoutedEventArgs e)
 {
-    MessageInputTextBox.Text += " 😊"; // Doda emoji v vnosno polje
+    if (sender is MenuItem menuItem)
+    {
+        string emoji = menuItem.Header.ToString();
+        MessageInputTextBox.Text += emoji; // Dodaj emoji v vnosno polje
+    }
 }
+
 
   
 
-}
+}   
