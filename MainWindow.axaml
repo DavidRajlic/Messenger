@@ -63,8 +63,20 @@
     <!-- Vnosno polje za sporočilo -->
     <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Vnesite sporočilo.."  />
      <StackPanel Orientation="Horizontal" Margin="5">
-        <Button Name="SendMessageButton" Content="Pošlji" Width="80" Click="SendMessageButton_Click"/>
-        <Button Name="EmojiButton" Content="😊" Width="40" Click="EmojiButton_Click"/>
+        <Button Name="SendMessageButton" Width="100" Click="SendMessageButton_Click">
+    <StackPanel Orientation="Horizontal" Spacing="5">
+        <TextBlock Text="Pošlji"/>
+        <Image Source="avares://Messenger/Assets/send.png" Width="16" Height="16"/>
+    </StackPanel>
+</Button>
+
+        <Button Name="EmojiButton" Width="60" Click="EmojiButton_Click">
+    <StackPanel Orientation="Horizontal" Spacing="5">
+        <TextBlock Text="😊" FontSize="16"/>
+        <Image Source="avares://Messenger/Assets/emoji.png" Width="16" Height="16"/>
+    </StackPanel>
+</Button>
+
     </StackPanel>
 
    

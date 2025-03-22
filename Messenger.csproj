@@ -16,6 +16,8 @@
     <AvaloniaResource Include="Assets\avatar.jpeg" />
     <AvaloniaResource Include="Assets\profile2.jpg" />
     <AvaloniaResource Include="Assets\profile3.jpg" />
+    <AvaloniaResource Include="Assets\send.png" />
+    <AvaloniaResource Include="Assets\emoji.png" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
       <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
