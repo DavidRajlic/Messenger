@@ -50,7 +50,7 @@ public class User : INotifyPropertyChanged
         Location = location;
     }
 
-    private Bitmap LoadBitmap(string path)
+     private Bitmap LoadBitmap(string path)
     {
         try
         {

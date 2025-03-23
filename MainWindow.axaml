@@ -58,8 +58,8 @@
     
     <TextBlock Text="Pogovor:" FontSize="16" Margin="5"/>
     <ListBox Name="ChatListBox" Height="200" Margin="5">
-        <ListBoxItem Content="User 1: Živjo!" />
-        <ListBoxItem Content="User 2: Hoj, kak si?" />
+        <ListBoxItem Content="Ti: Živjo!" />
+        <TextBlock Text="{Binding SelectedUser.Name, StringFormat='{}{0}: Hoj, kak si?'}"/>
     </ListBox>
 
     <!-- Vnosno polje za sporočilo -->
