@@ -1494,11 +1494,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/davidrajlic/David/Interakcija/vaja1/Messenger/Messenger.csproj",
+      "projectUniqueName": "/Users/davidrajlic/David/Interakcija/messenger/Messenger/Messenger.csproj",
       "projectName": "Messenger",
-      "projectPath": "/Users/davidrajlic/David/Interakcija/vaja1/Messenger/Messenger.csproj",
+      "projectPath": "/Users/davidrajlic/David/Interakcija/messenger/Messenger/Messenger.csproj",
       "packagesPath": "/Users/davidrajlic/.nuget/packages/",
-      "outputPath": "/Users/davidrajlic/David/Interakcija/vaja1/Messenger/obj/",
+      "outputPath": "/Users/davidrajlic/David/Interakcija/messenger/Messenger/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/davidrajlic/.nuget/NuGet/NuGet.Config"

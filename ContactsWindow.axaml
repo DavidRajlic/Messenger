@@ -1,0 +1,37 @@
+<!-- SecondWindow.axaml -->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Messenger"
+        x:DataType="local:MainViewModel"
+        x:Class="Messenger.ContactsWindow"
+        Title="Contacts" MinWidth="150" MinHeight="300">
+             <StackPanel Grid.Column="0" Margin="10">
+             <WrapPanel>
+                <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte stik.."  />
+                <Button Name="SendMessageButton" Width="100" Click="AddContact">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="Pošlji" />
+                        <Image Source="avares://Messenger/Assets/send.png" Width="16" Height="16"/>
+                    </StackPanel>
+                </Button>
+             </WrapPanel>
+                <TextBlock Text="Seznam stikov:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+               <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" >
+                    <ListBox.ItemTemplate >
+                        <DataTemplate x:DataType="local:User">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Image Source="{Binding ProfilePicture}" Width="50" Height="50"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"  />
+                                    <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>
+                                     <TextBlock Text="{Binding Email}" FontStyle="Italic" Foreground="Gray"/>
+                                     <TextBlock Text="{Binding Location}" FontStyle="Italic" Foreground="Gray"/>
+                                     <TextBlock Text="{Binding LastOnline}" FontStyle="Italic" Foreground="Gray"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
+</Window>

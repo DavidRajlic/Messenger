@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ace835/+Z3o=",
+  "dgSpecHash": "YU2KdVtny3w=",
   "success": true,
-  "projectFilePath": "/Users/davidrajlic/David/Interakcija/vaja1/Messenger/Messenger.csproj",
+  "projectFilePath": "/Users/davidrajlic/David/Interakcija/messenger/Messenger/Messenger.csproj",
   "expectedPackageFiles": [
     "/Users/davidrajlic/.nuget/packages/avalonia/11.2.5/avalonia.11.2.5.nupkg.sha512",
     "/Users/davidrajlic/.nuget/packages/avalonia.angle.windows.natives/2.1.22045.20230930/avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",

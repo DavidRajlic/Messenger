@@ -16,8 +16,8 @@
             <MenuItem Header="Stiki">
                 <MenuItem Header="Dodaj statično" Click="AddContact"/>
                 <MenuItem Header="Uredi statično" />
-                <MenuItem Header="Dodaj"/>
-                <MenuItem Header="Uredi" Command="{Binding EditUserCommand}"/>
+                <MenuItem Header="Dodaj" Click="OpenContactsWindow"/>
+                <MenuItem Header="Uredi"  Command="{Binding EditUserCommand}" />
                 <MenuItem Header="Odstrani" Command="{Binding RemoveUserCommand}"/>
             </MenuItem>
         </Menu>
@@ -37,20 +37,20 @@
             <StackPanel Grid.Column="0" Margin="10">
                 <TextBlock Text="Seznam stikov:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
                <ListBox ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" >
-    <ListBox.ItemTemplate >
-        <DataTemplate x:DataType="local:User">
-            <StackPanel Orientation="Horizontal" Spacing="10">
-            <Image Source="{Binding ProfilePicture}" Width="50" Height="50"/>
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}" FontWeight="Bold" DoubleTapped="OnItemDoubleTapped" />
-                    <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>
-                </StackPanel>
-            </StackPanel>
-        </DataTemplate>
-    </ListBox.ItemTemplate>
-</ListBox>
+                    <ListBox.ItemTemplate >
+                        <DataTemplate x:DataType="local:User">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Image Source="{Binding ProfilePicture}" Width="50" Height="50"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" DoubleTapped="OnItemDoubleTapped" />
+                                    <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-            </StackPanel>
+        </StackPanel>
 
    <WrapPanel Orientation="Vertical" Grid.Column="1" Margin="10">
    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" IsReadOnly="True" Margin="10"/>

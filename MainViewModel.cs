@@ -49,15 +49,22 @@ public class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    private void EditSelectedUser()
+    public Action? OpenEditWindowAction { get; set; }
+
+private void EditSelectedUser()
+{
+    if (SelectedUser != null)
     {
-        if (SelectedUser != null)
-        {
-            SelectedUser.Name = "Leon";
-            SelectedUser.Status = "Offline";
-            OnPropertyChanged(nameof(SelectedUser)); // UI osveži podatke o uporabniku
-        }
+        // Tukaj lahko narediš logiko za urejanje
+        SelectedUser.Name = "Spremenjen";
+        SelectedUser.Status = "Offline";
+
+        // In tukaj pokličeš okno (prek Viewa)
+        OpenEditWindowAction?.Invoke();
     }
+}
+
+
 
 
     private void ToggleStatus()
