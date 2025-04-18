@@ -26,8 +26,17 @@ public class MainViewModel : INotifyPropertyChanged
     public MainViewModel()
     {
         RemoveUserCommand = new RelayCommand(_ => RemoveSelectedUser(), _ => SelectedUser != null);
-        EditUserCommand = new RelayCommand(_ => EditSelectedUser(), _ => SelectedUser != null);
-        ToggleStatusCommand = new RelayCommand(_ => EditSelectedUser(), _ => SelectedUser != null);
+        EditUserCommand = new RelayCommand(param =>
+        {
+            bool state = bool.TryParse(param?.ToString(), out var result) && result;
+            EditSelectedUser(state);
+        }, _ => SelectedUser != null);
+
+        ToggleStatusCommand = new RelayCommand(param =>
+        {
+            bool state = bool.TryParse(param?.ToString(), out var result) && result;
+            EditSelectedUser(state);
+        }, _ => SelectedUser != null);
 
         Users.Add(new User("David", "Prisoten", "Assets/avatar.jpeg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
         Users.Add(new User("Luka", "Odsoten", "Assets/profile2.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
@@ -44,23 +53,25 @@ public class MainViewModel : INotifyPropertyChanged
         if (SelectedUser != null)
         {
             Users.Remove(SelectedUser);
-            SelectedUser = null; // Reset izbire
-            OnPropertyChanged(nameof(SelectedUser)); // UI osveži izbranega uporabnika
+            SelectedUser = null; 
+            OnPropertyChanged(nameof(SelectedUser)); 
         }
     }
 
-    public Action? OpenEditWindowAction { get; set; }
+public Action? OpenEditWindowAction { get; set; }
 
-private void EditSelectedUser()
+private void EditSelectedUser(bool state)
 {
     if (SelectedUser != null)
     {
-        // Tukaj lahko narediš logiko za urejanje
-        SelectedUser.Name = "Spremenjen";
+        
+      //  SelectedUser.Name = "Leon";
         SelectedUser.Status = "Offline";
-
-        // In tukaj pokličeš okno (prek Viewa)
-        OpenEditWindowAction?.Invoke();
+        
+        if(state) {
+            OpenEditWindowAction?.Invoke();
+        }
+        
     }
 }
 

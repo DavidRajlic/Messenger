@@ -12,17 +12,29 @@ public partial class MainWindow : Window
 {
 
 
+    private EditWindow? _editWindow;
     public MainWindow()
 {
     InitializeComponent();
 
     var vm = new MainViewModel();
 
-    // tukaj nastaviš funkcijo, ki odpre okno
     vm.OpenEditWindowAction = () =>
     {
-        var editWindow = new EditWindow(vm);
-        editWindow.Show(); // ali ShowDialog(this) če rabiš modalen
+        // disable to create to edit windows
+        if (_editWindow == null || !_editWindow.IsVisible)
+    {
+        if (DataContext is MainViewModel vm)
+        {
+            _editWindow = new EditWindow(vm);
+            _editWindow.Closed += (_, _) => _editWindow = null; 
+            _editWindow.Show();
+        }
+    }
+    else
+    {
+        _editWindow.Activate(); 
+    }
     };
 
     DataContext = vm;

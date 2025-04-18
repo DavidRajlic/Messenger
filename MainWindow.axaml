@@ -17,7 +17,7 @@
                 <MenuItem Header="Dodaj statično" Click="AddContact"/>
                 <MenuItem Header="Uredi statično" />
                 <MenuItem Header="Dodaj" Click="OpenContactsWindow"/>
-                <MenuItem Header="Uredi"  Command="{Binding EditUserCommand}" />
+                <MenuItem Header="Uredi"  Command="{Binding EditUserCommand}" CommandParameter="true" />
                 <MenuItem Header="Odstrani" Command="{Binding RemoveUserCommand}"/>
             </MenuItem>
         </Menu>
@@ -53,14 +53,14 @@
         </StackPanel>
 
    <WrapPanel Orientation="Vertical" Grid.Column="1" Margin="10">
-   <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" IsReadOnly="True" Margin="10"/>
+    <TextBox Text="{Binding SelectedUser.Name, Mode=OneWay}" IsReadOnly="True" Margin="10"/>
 
-    
-    <TextBlock Text="Pogovor:" FontSize="16" Margin="5"/>
-    <ListBox Name="ChatListBox" Height="200" Margin="5">
-        <ListBoxItem Content="Ti: Živjo!" />
-        <TextBlock Text="{Binding SelectedUser.Name, StringFormat='{}{0}: Hoj, kak si?'}"/>
-    </ListBox>
+        
+        <TextBlock Text="Pogovor:" FontSize="16" Margin="5"/>
+        <ListBox Name="ChatListBox" Height="200" Margin="5">
+            <ListBoxItem Content="Ti: Živjo!" />
+            <TextBlock Text="{Binding SelectedUser.Name, StringFormat='{}{0}: Hoj, kak si?'}"/>
+        </ListBox>
 
     <!-- Vnosno polje za sporočilo -->
     <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Vnesite sporočilo.."  />

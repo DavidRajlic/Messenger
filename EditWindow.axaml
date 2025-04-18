@@ -6,11 +6,6 @@
         x:Class="Messenger.EditWindow"
         Title="Edit" MinWidth="150" MinHeight="300">
              <StackPanel Grid.Column="0" Margin="10">
-             <WrapPanel>
-                <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte stik.."  />
-             </WrapPanel>
-                <TextBlock Text="Seznam stikov:" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-
-
+                <TextBox Text="{Binding SelectedUser.Name, Mode=TwoWay}" Margin="10"/>
             </StackPanel>
 </Window>
