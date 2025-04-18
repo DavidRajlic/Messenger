@@ -20,7 +20,8 @@
                     <ListBox.ItemTemplate >
                         <DataTemplate x:DataType="local:User">
                             <StackPanel Orientation="Horizontal" Spacing="10">
-                            <Image Source="{Binding ProfilePicture}" Width="50" Height="50"/>
+                            <Image Name="UserImage" Source="{Binding ProfilePicture}" PointerPressed="Image_PointerPressed" Cursor="Hand" Width="50" Height="50"
+                            Stretch="UniformToFill"/>
                                 <StackPanel>
                                     <TextBlock Text="{Binding Name}" FontWeight="Bold"  />
                                     <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>

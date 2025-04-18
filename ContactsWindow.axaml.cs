@@ -22,6 +22,7 @@ namespace Messenger
         }
 
 
+
         private async void AddContact(object? sender, RoutedEventArgs e)
         {
 
@@ -43,6 +44,32 @@ namespace Messenger
                
             }
         }
+
+        private async void Image_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                AllowMultiple = false,
+                Filters = new List<FileDialogFilter>
+                {
+                    new FileDialogFilter { Name = "Slike", Extensions = { "jpg", "jpeg", "png" } }
+                }
+            };
+
+            var result = await dialog.ShowAsync(this);
+
+            if (result != null && result.Length > 0)
+            {
+                string selectedImagePath = result[0];
+
+                if (DataContext is MainViewModel vm && vm.SelectedUser != null)
+                {
+                    vm.SelectedUser.ProfilePicturePath = selectedImagePath;
+                }
+            }
+        }
+
+
 
 
         

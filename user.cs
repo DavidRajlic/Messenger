@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using Avalonia.Controls;
+using System.IO;
 using Avalonia.Media.Imaging;
 
 namespace Messenger;
@@ -9,6 +9,8 @@ public class User : INotifyPropertyChanged
 {
     private string _name;
     private string _status;
+    private string _profilePicturePath;
+    private Bitmap? _profilePicture;
 
     public string Name
     {
@@ -29,36 +31,58 @@ public class User : INotifyPropertyChanged
             OnPropertyChanged(nameof(Status));
         }
     }
-    public Bitmap ProfilePicture { get; set; }
+
+    public string ProfilePicturePath
+    {
+        get => _profilePicturePath;
+        set
+        {
+            _profilePicturePath = value;
+            OnPropertyChanged(nameof(ProfilePicturePath));
+            LoadBitmapFromPath(value); // on every path change
+        }
+    }
+
+    public Bitmap? ProfilePicture
+    {
+        get => _profilePicture;
+        private set
+        {
+            _profilePicture = value;
+            OnPropertyChanged(nameof(ProfilePicture));
+        }
+    }
+
     public string Email { get; set; }
     public DateTime LastOnline { get; set; }
     public string Location { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string propertyName)
-    {
+    protected void OnPropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 
-     public User(string name, string status, string imagePath, string email, DateTime lastOnline, string location)
+    public User(string name, string status, string imagePath, string email, DateTime lastOnline, string location)
     {
         _name = name;
         _status = status;
-        ProfilePicture = LoadBitmap(imagePath);
         Email = email;
         LastOnline = lastOnline;
         Location = location;
+        ProfilePicturePath = imagePath; 
     }
 
-     private Bitmap LoadBitmap(string path)
+    private void LoadBitmapFromPath(string path)
     {
         try
         {
-            return new Bitmap(path);
+            if (File.Exists(path))
+                ProfilePicture = new Bitmap(path);
+            else
+                ProfilePicture = null;
         }
-        catch (Exception)
+        catch
         {
-            return null; // Če slika ne obstaja, vrne null
+            ProfilePicture = null;
         }
     }
 }
