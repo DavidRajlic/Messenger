@@ -27,7 +27,9 @@ public partial class MainWindow : Window
         if (DataContext is MainViewModel vm)
         {
             _editWindow = new EditWindow(vm);
-            _editWindow.Closed += (_, _) => _editWindow = null; 
+            _editWindow.Closed += (_, _) => _editWindow = null;
+            _editWindow.Topmost = true;
+
             _editWindow.Show();
         }
     }
