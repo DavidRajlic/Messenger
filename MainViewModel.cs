@@ -38,9 +38,11 @@ public class MainViewModel : INotifyPropertyChanged
             EditSelectedUser(state);
         }, _ => SelectedUser != null);
 
-        Users.Add(new User("David", "Prisoten", "Assets/avatar.jpeg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-        Users.Add(new User("Luka", "Odsoten", "Assets/profile2.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-        Users.Add(new User("Ana", "Odsotna", "Assets/profile3.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
+        DateTime start = new DateTime(2000, 1, 1);
+        DateTime end = DateTime.Now;
+        Users.Add(new User("David", "Prisoten", "Assets/avatar.jpeg", "rajlic.david@hmail.com", GetRandomDate(start, end), "Slovenija"));
+        Users.Add(new User("Luka", "Odsoten", "Assets/profile2.jpg", "luka.lamp@email.com", GetRandomDate(start, end), "Slovenija"));
+        Users.Add(new User("Ana", "Odsotna", "Assets/profile3.jpg", "ana.kodr@email.com", GetRandomDate(start, end), "Slovenija"));
 
          if (Users.Count > 0)
     {
@@ -75,6 +77,14 @@ private void EditSelectedUser(bool state)
     }
 }
 
+
+public static DateTime GetRandomDate(DateTime from, DateTime to)
+{
+    Random rand = new Random();
+    TimeSpan range = to - from;
+    var randTimeSpan = new TimeSpan((long)(rand.NextDouble() * range.Ticks));
+    return from + randTimeSpan;
+}
 
 
 
