@@ -1,4 +1,7 @@
-<Styles xmlns="https://github.com/avaloniaui">
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    
     <Style Selector="Button">
         <Setter Property="Background" Value="LightBlue"/>
         <Setter Property="Foreground" Value="White"/>
@@ -7,9 +10,40 @@
         <Setter Property="Padding" Value="10,5"/>
     </Style>
 
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="SteelBlue"/>
+    </Style>
+
+    <Style Selector="Button.primary">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="Gold"/>
+    </Style>
+
     <Style Selector="TextBox">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Padding" Value="5"/>
     </Style>
+
+    <Style Selector="TextBox:focus">
+        <Setter Property="BorderBrush" Value="Gold"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+
+
+    <Style Selector="Image.primary">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Stretch" Value="UniformToFill"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style Selector="Image.secondary">
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+
+
+
 </Styles>

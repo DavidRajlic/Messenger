@@ -40,7 +40,7 @@
                     <ListBox.ItemTemplate >
                         <DataTemplate x:DataType="local:User">
                             <StackPanel Orientation="Horizontal" Spacing="10">
-                            <Image Source="{Binding ProfilePicture}" Width="50" Height="50"/>
+                            <Image Classes="primary"  Source="{Binding ProfilePicture}" />
                                 <StackPanel>
                                     <TextBlock Text="{Binding Name}" FontWeight="Bold" DoubleTapped="OnItemDoubleTapped" />
                                     <TextBlock Text="{Binding Status}" FontStyle="Italic" Foreground="Gray"/>
@@ -63,7 +63,7 @@
         </ListBox>
 
     <!-- Vnosno polje za sporočilo -->
-    <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Vnesite sporočilo.."  />
+    <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Vnesite sporočilo.."   />
      <StackPanel Orientation="Horizontal" Margin="5">
         <Button Name="SendMessageButton" Width="100" Click="SendMessageButton_Click">
     <StackPanel Orientation="Horizontal" Spacing="5">
@@ -72,7 +72,7 @@
     </StackPanel>
 </Button>
 
-     <Button Name="EmojiButton" Width="60">
+     <Button Classes="primary" Name="EmojiButton" Width="60">
     <Button.ContextMenu>
         <ContextMenu>
             <MenuItem Header="😀" Click="Emoji_Click"/>

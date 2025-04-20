@@ -4,8 +4,11 @@
         xmlns:local="clr-namespace:Messenger"
         x:DataType="local:MainViewModel"
         x:Class="Messenger.EditWindow"
-        Title="Edit" MinWidth="150" MinHeight="300">
+        Title="Edit" MaxWidth="250" MaxHeight="300">
              <StackPanel Grid.Column="0" Margin="10">
                 <TextBox Text="{Binding SelectedUser.Name, Mode=TwoWay}" Margin="10"/>
+                <TextBox Text="{Binding SelectedUser.Email, Mode=TwoWay}" Margin="10"/>
+                <TextBox Text="{Binding SelectedUser.Location, Mode=TwoWay}" Margin="10"/>
+                 <Image  Classes="primary secondary" Name="UserImage" Source="{Binding SelectedUser.ProfilePicture}" PointerPressed="Image_PointerPressed" />
             </StackPanel>
 </Window>
