@@ -26,23 +26,32 @@ namespace Messenger
         private async void AddContact(object? sender, RoutedEventArgs e)
         {
 
-            if (DataContext is MainViewModel vm)
+        if (DataContext is MainViewModel vm)
+        {
+            string username = UsernameInputTextBox.Text;
+            string mail = MailInputTextBox.Text;
+            string country = CountryInputTextBox.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(country))
             {
-                string username = MessageInputTextBox.Text;
-                if (string.IsNullOrEmpty(username))
-                {
-                    // Pokaži opozorilo
-                    await MessageBoxManager
-                        .GetMessageBoxStandard("Napaka", "Vnesi uporabniško ime!")
-                        .ShowAsync();
-                }
-                else {
-                    // add user
-                    vm.Users.Add(new User(username, "Offline", "slike/default.jpg", "novuporabnik@email.com", DateTime.Now, "Slovenija"));
-                    this.Close(); 
-                }
-               
+                await MessageBoxManager
+                    .GetMessageBoxStandard("Napaka", "Nisi vnesel vseh podatkov!")
+                    .ShowAsync();
             }
+            else if (!mail.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                await MessageBoxManager
+                    .GetMessageBoxStandard("Napaka", "E-poštni naslov mora biti v obliki @gmail.com!")
+                    .ShowAsync();
+            }
+            else
+            {
+                // Dodaj uporabnika
+                vm.Users.Add(new User(username, "Offline", "slike/default.jpg", mail, DateTime.Now, country));
+                this.Close();
+            }
+        }
+
         }
 
         private async void Image_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)

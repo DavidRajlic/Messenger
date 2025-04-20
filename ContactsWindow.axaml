@@ -6,11 +6,14 @@
         x:Class="Messenger.ContactsWindow"
         Title="Contacts" MinWidth="150" MinHeight="300">
              <StackPanel Grid.Column="0" Margin="10">
+             <TextBlock Text="Dodaj uporabnika" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
              <WrapPanel>
-                <TextBox Name="MessageInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte stik.."  />
+                <TextBox Name="UsernameInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte uporabniško ime"  />
+                <TextBox Name="MailInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte mail"  />
+                <TextBox Name="CountryInputTextBox" Height="30" Margin="5" Width="250" Watermark="Dodajte državo"  />
                 <Button Name="SendMessageButton" Width="100" Click="AddContact">
                     <StackPanel Orientation="Horizontal" Spacing="5">
-                        <TextBlock Text="Pošlji" />
+                        <TextBlock Text="Potrdi" />
                         <Image Source="avares://Messenger/Assets/send.png" Width="16" Height="16"/>
                     </StackPanel>
                 </Button>
