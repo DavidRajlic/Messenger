@@ -47,7 +47,7 @@ namespace Messenger
             else
             {
                 // Dodaj uporabnika
-                vm.Users.Add(new User(username, "Offline", "slike/default.jpg", mail, DateTime.Now, country));
+                vm.Users.Add(new User(username, "Offline", "Assets/q.jpg", mail, DateTime.Now, country));
                 this.Close();
             }
         }
